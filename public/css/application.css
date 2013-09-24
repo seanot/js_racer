@@ -1,7 +1,17 @@
+.start_light {
+  height: 30px;
+  width: 30px;
+  border-radius: 30px;
+  background-color: #f00;
+  position: absolute;
+  top: 8px;
+  left: 450px;
+}
+
 .racer_table td {
   background-color: white;
   height: 20px;
-  width: 20px;
+  width: 25px;
   border-top: 1px solid #000;
   border-right: 1px solid #000;
   border-bottom: 1px solid #000;

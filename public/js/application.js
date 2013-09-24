@@ -1,31 +1,43 @@
-function moveRacer() {
-  $('#player1_strip .active').next().addClass("active").prev().removeClass("active"); 
+
+
+function moveRacer1() {
+    $('#player1_strip .active').next().addClass("active").prev().removeClass("active"); 
+    if ($('#player1_strip td').last().attr('class') === "active") {
+
+        alert("player1 won!");
+        resetBoard();
+    }
 }
 
 function moveRacer2() {
-  $('#player2_strip .active').next().addClass("active").prev().removeClass("active"); 
+    $('#player2_strip .active').next().addClass("active").prev().removeClass("active"); 
+    if ($('#player2_strip td').last().attr('class') === "active") {
+        alert("player2 won!");
+        resetBoard();
+    }
+}
+
+function resetBoard() {
+    $('td.active').removeClass('active');
+    $('#player1_strip td').first().addClass('active');
+    $('#player2_strip td').first().addClass('active');
+}
+
+function timeout_init() {
+  setTimeout("$('.start_light').css('background-color', '#f90')", 2000);
 }
 
 $(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
+    $('.start_light').click(timeout_init);
+    $(document).on('keyup', function(event) {
+  
+        if(event.keyCode === 81) {
+            moveRacer1();
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+        }
+        if(event.keyCode === 80) {
+            moveRacer2();
 
-  $(document).on('keydown', function(event) {
-    // Detect which key was pressed and call the appropriate function
-    // Google "jquery keyup what key was pressed" if you don't know how
-
-    if(event.keyCode == 77) {
-      moveRacer();
-    }
-
-    if(event.keyCode == 65) {
-      moveRacer2();
-    }
-
-    // console.log(event);
-    // moveRacer();
-  });
+        }
+    });
 });
