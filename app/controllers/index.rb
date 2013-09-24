@@ -20,5 +20,5 @@ post '/login' do
 end
 
 post '/result/:player_id/:time' do
-  @winner = Pla
+  
 end
