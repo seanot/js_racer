@@ -23,12 +23,16 @@ function resetBoard() {
     $('#player2_strip td').first().addClass('active');
 }
 
-function timeout_init() {
-  setTimeout("$('.start_light').css('background-color', '#f90')", 2000);
-}
+// function timeout_init() {
+//   setTimeout("$('.start_light').css('background-color', '#f90')", 2000);
+// }
 
 $(document).ready(function() {
-    $('.start_light').click(timeout_init);
+    $('.start_light').click(function() {
+          setTimeout("$('.start_light').css('background-color', '#f00')", 1000);
+          setTimeout("$('.start_light').css('background-color', '#f90')", 2000);
+          setTimeout("$('.start_light').css('background-color', '#0f0')", 3000);
+    });
     $(document).on('keyup', function(event) {
   
         if(event.keyCode === 81) {
