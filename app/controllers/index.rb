@@ -13,8 +13,12 @@ end
 #======POST======
 
 post '/login' do
-  @player_1 = Player.find_or_create_by_initials(params[:player_1])
-  @player_2 = Player.find_or_create_by_initials(params[:player_2])
+  @player_1 = Player.find_or_create_by_name(params[:player_1])
+  @player_2 = Player.find_or_create_by_name(params[:player_2])
 
   redirect to("/player_1/#{@player_1.id}/player_2/#{@player_2.id}")
+end
+
+post '/result/:player_id/:time' do
+  @winner = Pla
 end

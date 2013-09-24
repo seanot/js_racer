@@ -37,10 +37,10 @@ function playerAction() {
         if(event.keyCode === 80) {
             moveRacer2();
         }
-    });
+    })
 }
 
-function countDown1() {
+function countDown3() {
     setTimeout("$('.start_light').css('background-color', '#f00')", 1000);
 }
 
@@ -48,7 +48,7 @@ function countDown2() {
     setTimeout("$('.start_light').css('background-color', '#f90')", 2000);
 }
 
-function countDown3() {
+function countDown1() {
     setTimeout("$('.start_light').css('background-color', '#0f0')", 3000);
     
 }
@@ -59,11 +59,8 @@ function launch() {
 }
 
 $(document).ready(function() {
-    $('.start_light').click(function() {
-          countDown1();
-          countDown2();
-          countDown3();
-          launch();    
-    });
-
+    countDown3();
+    countDown2();
+    countDown1();
+    launch();    
 });
