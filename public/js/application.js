@@ -1,26 +1,63 @@
 var start = 0
 var stop = 0
-var official_time = 0
+var winning_time = 0
+var player = null
+
+function Racer(name) {
+  this.name = name
+}
+
+
 
 function moveRacer1() {
     $('#player1_strip .active').next().addClass("active").prev().removeClass("active"); 
     if ($('#player1_strip td').last().attr('class') === "active") {
-        stop = new Date();
-        alert("player1 won!");
-        official_time = (stop - start - 3000)
-        resetBoard();
+        detectWinner(player_1);
     }
 }
 
 function moveRacer2() {
     $('#player2_strip .active').next().addClass("active").prev().removeClass("active"); 
     if ($('#player2_strip td').last().attr('class') === "active") {
-        stop = new Date();
-        alert("player2 won!");
-        official_time = (stop - start - 3000)
-        resetBoard();
+        detectWinner(player_2);
     }
 }
+
+function detectWinner(player) {
+    stop = new Date();
+    console.log(player);
+    winning_time = (stop - start - 3000);
+    sendWinner(player, winning_time);
+    alert(player);
+    resetBoard();
+}
+
+function sendWinner(player, winning_time) {
+    var url = '/result' 
+    
+    $.ajax({
+      url: url,
+      type: 'POST',
+      dataType: 'json',
+      data: { player_id: player, winning_time: winning_time }
+    })
+    .done(function(response) {
+      console.log("success");
+      console.log(response.player_id);
+      console.log(response.winning_time);
+      $('.results').show();
+      $('#player').append(response.player_id);
+      $('#score').append(response.winning_time);
+    })
+    .fail(function() {
+      console.log("error");
+    })
+    .always(function() {
+      console.log("complete");
+    });
+    
+}
+
 
 function resetBoard() {
     $('td.active').removeClass('active');
@@ -59,6 +96,9 @@ function launch() {
 }
 
 $(document).ready(function() {
+    $('.results').hide();
+    player_1 = $('#player1_strip').data('player1_id');
+    player_2 = $('#player2_strip').data('player2_id');
     countDown3();
     countDown2();
     countDown1();

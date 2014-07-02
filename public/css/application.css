@@ -32,3 +32,13 @@
   top: 50px;
   left: 20px;
 }
+
+.results {
+  position: absolute;
+  top: 120px;
+  left: 225px;
+}
+
+.results li {
+  list-style-type: none;
+}
