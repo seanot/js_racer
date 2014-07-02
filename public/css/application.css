@@ -1,12 +1,44 @@
+.start_light {
+  height: 30px;
+  width: 30px;
+  border-radius: 30px;
+  background-color: #fff;
+  border: 1px solid black;
+  position: absolute;
+  top: 8px;
+  left: 300px;
+}
+
+.racer_table {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  
+}
+
 .racer_table td {
   background-color: white;
   height: 20px;
-  width: 20px;
-  border-top: 1px solid #000;
-  border-right: 1px solid #000;
-  border-bottom: 1px solid #000;
+  width: 25px;
+  border: 1px solid #000;
 }
 
 .racer_table td.active {
   background-color: black;
+}
+
+.login_form {
+  position: absolute;
+  top: 50px;
+  left: 20px;
+}
+
+.results {
+  position: absolute;
+  top: 120px;
+  left: 225px;
+}
+
+.results li {
+  list-style-type: none;
 }
